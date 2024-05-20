@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload an Image</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+
+    <div id="container">
+        <div id="chatMessages">
+            <div id="welcome">
+                <h1>Hello, I am a<span style="font-weight: bold; color: rgba(10, 0, 192, 0.801);">EYE</span>!</h1>
+                <p>Show me around, and I'll try and assist you.</p>
+                <div id="examples">
+                    <!-- <div class="eg">
+                        <div class="icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="text">Show me the latest news</div>
+                    </div> -->
+                    <div class="eg">
+                        <div class="icon">
+                            <i class="fas fa-road"></i>
+                        </div>
+                        <div class="text">You can show me street and road signs</div>
+                    </div>
+                    <div class="eg">
+                        <div class="icon">
+                            <i class="fas fa-socks"></i>
+                        </div>
+                        <div class="text">You can ask for the color of real life objects</div>
+                    </div>
+                    <div class="eg">
+                        <div class="icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="text">I can also count real life objects</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="chatInput">
+            <button id="toggle">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <form id="textForm" onsubmit="sendMessage(); return false;" action="#">
+                <input type="text" id="messageInput" placeholder="Type a message...">
+                <input type="button" value="" onclick="sendMessage()" style="display: none;">
+                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+            </form>
+            <form id="uploadForm">
+                <label for="fileInput" class="custom-file-upload">
+                    <i class="fas fa-image"></i>
+                </label>
+                <input type="file" id="fileInput" name="file" required accept="image/*" onchange="uploadFile()">
+                <!-- <input type="button" value="Upload" onclick=""> -->
+            </form>
+        </div>
+    </div>
+
+    <div id="message"></div>
+    <script src="https://kit.fontawesome.com/478f71fade.js" crossorigin="anonymous"></script>
+    <script src="/static/speech.js"></script>
+    <script src="/static/upload.js"></script>
+    <script src="/static/ui.js"></script>
+
+</body>
+</html>

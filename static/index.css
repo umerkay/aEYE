@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition-duration: 300ms;
+}
+
+body {
+  font-family: "Raleway";
+  padding: 1rem;
+  height: 98vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background: linear-gradient(299deg, #0062ff, #ab00ff, #7300ff);
+  background-size: 600% 600%;
+  animation: AnimationName 10s ease infinite;
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+input {
+  font-family: "Raleway", sans-serif;
+  border-radius: 100rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+}
+input:focus {
+  outline: none;
+}
+
+button, input[type=button] {
+  font-family: "Roboto", sans-serif;
+  border-radius: 100rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  border: 0px solid #007bff;
+  color: white;
+  cursor: pointer;
+  background-color: white;
+  color: #007bff;
+}
+
+button:hover, input[type=button]:hover {
+  background-color: #0057b5;
+  color: white;
+  transform: scale(1.2);
+}
+
+#container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+#container #chatMessages {
+  width: 100%;
+  border-radius: 1rem;
+  background-color: #f9f9f9;
+  /* From https://css.glass */
+  padding: 1rem;
+  margin-bottom: 1rem;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  overflow-y: auto;
+}
+#container #chatMessages .message {
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  max-width: 70%;
+  animation: fadeInBottom 0.25s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  min-width: 100px;
+}
+#container #chatMessages .message img {
+  width: 100%;
+  border-radius: 1rem;
+}
+#container #chatMessages .message.sent {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  align-self: flex-end;
+}
+#container #chatMessages .message.received {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-start;
+}
+#container #chatMessages .message.received#loading {
+  background-color: white;
+  color: #242424;
+}
+#container #welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 0.4rem;
+  color: #242424;
+  width: 600px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#container #welcome h1 {
+  font-size: 3rem;
+}
+#container #welcome #examples {
+  color: #242424;
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+  width: 100%;
+}
+#container #welcome #examples .eg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  align-items: center;
+}
+#container #welcome #examples .eg .icon {
+  font-size: 5rem;
+}
+#container #welcome #examples .eg .text {
+  font-size: 1rem;
+  text-align: center;
+}
+#container #chatInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#container #chatInput #textForm {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  grid-template-columns: 10fr 1fr;
+}
+#container #chatInput #textForm #messageInput {
+  border: 0px solid;
+}
+#container #chatInput #uploadForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fade-in-bottom {
+  animation: fadeInBottom 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+@keyframes fadeInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+input[type=file] {
+  display: none;
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 100rem;
+  background-color: white;
+  color: #007bff;
+  border: 0px solid #007bff;
+}
+
+.custom-file-upload:hover {
+  background-color: #0057b5;
+  color: white;
+  transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+  #container {
+    width: 100% !important;
+    padding: 0px;
+  }
+  #container #chatInput {
+    gap: 0.25rem;
+  }
+  #container #welcome {
+    width: 100%;
+    padding: 1rem;
+  }
+  #container #examples {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+  #container #examples .eg {
+    width: 120px;
+  }
+  #container #examples .eg .icon {
+    font-size: 3rem !important;
+  }
+}/*# sourceMappingURL=index.css.map */
