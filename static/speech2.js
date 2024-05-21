@@ -69,24 +69,24 @@ if (!('webkitSpeechRecognition' in window)) {
     };
 
 //start and stop the speech recognition when j is pressed and released
-document.addEventListener('keydown', function(e){
-    if(e.key === "j" && !isListening){
-        recognition.start();
-        isListening = true;
-        //set toggle button to hover state
-        document.getElementById('toggle').classList.add('hover');
-    toggleButton.innerHTML = "<i class='fas fa-stop'></i>"
-    }
-});
+// document.addEventListener('keydown', function(e){
+//     if(e.key === "j" && !isListening){
+//         recognition.start();
+//         isListening = true;
+//         //set toggle button to hover state
+//         document.getElementById('toggle').classList.add('hover');
+//     toggleButton.innerHTML = "<i class='fas fa-stop'></i>"
+//     }
+// });
 
-document.addEventListener('keyup', function(e){
-    if(e.key === "j" && isListening){
-        recognition.stop();
-        isListening = false;
-        //set toggle button to normal state
-        document.getElementById('toggle').classList.remove('hover');
-    toggleButton.innerHTML = "<i class='fas fa-microphone'></i>"
+// document.addEventListener('keyup', function(e){
+//     if(e.key === "j" && isListening){
+//         recognition.stop();
+//         isListening = false;
+//         //set toggle button to normal state
+//         document.getElementById('toggle').classList.remove('hover');
+//     toggleButton.innerHTML = "<i class='fas fa-microphone'></i>"
 
-    }
-});
+//     }
+// });
 }
