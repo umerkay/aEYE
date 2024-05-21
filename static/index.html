@@ -3,38 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload an Image</title>
+    <title>aEYE</title>
     <link rel="stylesheet" href="/static/index.css">
+    <link rel="icon" href="/static/logo.png" type="image/x-icon">
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
 </head>
-<body>
 
-    <div id="container">
-        <div id="chatMessages">
+<body>
+    <a href="#mainContent" class="sr-only">Skip to main content</a>
+    <video id="video" width="640" height="480" autoplay class="hidden"></video>
+    <canvas id="canvas" width="640" height="480" style="display: none;"></canvas>
+    
+    <div id="container" role="main" aria-labelledby="mainTitle">
+        <div id="chatMessages" aria-live="polite" aria-atomic="true">
             <div id="welcome">
-                <h1>Hello, I am a<span style="font-weight: bold; color: rgba(10, 0, 192, 0.801);">EYE</span>!</h1>
+                <h1 id="mainTitle">Hello, I am a<span style="font-weight: bold; color: rgba(10, 0, 192, 0.801);">EYE</span>!</h1>
                 <p>Show me around, and I'll try and assist you.</p>
-                <div id="examples">
-                    <!-- <div class="eg">
+                <p>Press J to speak.</p>
+                <div id="examples" role="list">
+                    <div class="eg" role="listitem">
                         <div class="icon">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <div class="text">Show me the latest news</div>
-                    </div> -->
-                    <div class="eg">
-                        <div class="icon">
-                            <i class="fas fa-road"></i>
+                            <i class="fas fa-road" aria-hidden="true"></i>
+                            <span class="sr-only">Street and road signs example</span>
                         </div>
                         <div class="text">You can show me street and road signs</div>
                     </div>
-                    <div class="eg">
+                    <div class="eg" role="listitem">
                         <div class="icon">
-                            <i class="fas fa-socks"></i>
+                            <i class="fas fa-socks" aria-hidden="true"></i>
+                            <span class="sr-only">Color of real life objects example</span>
                         </div>
                         <div class="text">You can ask for the color of real life objects</div>
                     </div>
-                    <div class="eg">
+                    <div class="eg" role="listitem">
                         <div class="icon">
-                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-sun" aria-hidden="true"></i>
+                            <span class="sr-only">Count real life objects example</span>
                         </div>
                         <div class="text">I can also count real life objects</div>
                     </div>
@@ -42,29 +57,29 @@
             </div>
         </div>
         <div id="chatInput">
-            <button id="toggle">
-                <i class="fas fa-microphone"></i>
+            <button id="toggle" aria-label="Toggle microphone">
+                <i class="fas fa-microphone" aria-hidden="true"></i>
             </button>
             <form id="textForm" onsubmit="sendMessage(); return false;" action="#">
-                <input type="text" id="messageInput" placeholder="Type a message...">
+                <label for="messageInput" class="sr-only">Type a message</label>
+                <input type="text" id="messageInput" placeholder="Type a message..." aria-label="Message input">
                 <input type="button" value="" onclick="sendMessage()" style="display: none;">
-                <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+                <button onclick="sendMessage()" aria-label="Send message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
             </form>
             <form id="uploadForm">
                 <label for="fileInput" class="custom-file-upload">
-                    <i class="fas fa-image"></i>
+                    <i class="fas fa-image" aria-hidden="true"></i>
+                    <span class="sr-only">Upload an image</span>
                 </label>
-                <input type="file" id="fileInput" name="file" required accept="image/*" onchange="uploadFile()">
-                <!-- <input type="button" value="Upload" onclick=""> -->
+                <input type="file" id="fileInput" name="file" required accept="image/*" onchange="uploadFile()" aria-label="Upload image">
             </form>
         </div>
     </div>
 
-    <div id="message"></div>
+    <div id="message" role="alert"></div>
     <script src="https://kit.fontawesome.com/478f71fade.js" crossorigin="anonymous"></script>
     <script src="/static/speech.js"></script>
     <script src="/static/upload.js"></script>
     <script src="/static/ui.js"></script>
-
 </body>
 </html>

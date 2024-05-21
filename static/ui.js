@@ -26,7 +26,7 @@ function sendMessage() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ prompt: message, image: IMAGE_PATH })
+        body: JSON.stringify({ prompt: message.toLowerCase(), image: IMAGE_PATH })
     }).then(response => response.json())
     .then(data => {
         receiveMessage(data.response);
@@ -68,3 +68,68 @@ function receiveMessage(message) {
         createMessage(message, false);
     }
 }
+
+// Access the video element and canvas element
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext('2d');
+
+
+let capturing = false;
+
+// Function to capture the image
+function captureImage() {
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    return new Promise(resolve => {
+        canvas.toBlob(resolve, 'image/png');
+    });
+}
+
+// Event listener for keydown event
+document.getElementById("container").addEventListener('keydown', (event) => {
+    if (event.key === 'f' && !capturing) {
+        video.classList.remove("hidden");
+
+        capturing = true;
+        // Request access to the webcam
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            console.error('Error accessing webcam:', err);
+        });
+    }
+});
+
+// Event listener for keyup event
+document.getElementById("container").addEventListener('keyup', async (event) => {
+    if (event.key === 'f' && capturing) {
+        const img = await captureImage();
+        const formData = new FormData();
+        formData.append('file', img, 'capture.png');
+        capturing = false;
+        // Stop capturing the video
+        video.srcObject.getVideoTracks().forEach(track => track.stop());
+        video.classList.add("hidden");
+
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            sendImgMessage("/uploads/" + data.filename);
+            // const messageDiv = document.getElementById('message');
+            // if (data.error) {
+            //     messageDiv.innerText = 'Error: ' + data.error;
+            // } else {
+            //     messageDiv.innerText = 'Success: ' + data.message + '\nFilename: ' + data.filename;
+            // }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error occurred. Please try again.');
+        });
+    }
+});

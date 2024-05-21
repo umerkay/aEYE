@@ -21,6 +21,7 @@ def getAnswer(img, ques):
     # Optionally, remove the question part from the generated text
     # //lowercase ques
     ques = ques.lower()
+    print(ques)
     if ques in generated_text:
         answer = generated_text.split(ques, 1)[-1].strip()
     else:
