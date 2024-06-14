@@ -60,8 +60,8 @@ Our solution involves fine-tuning a pretrained version of Microsoft’s Generati
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/umerkay/dl_project.git
-   cd dl_project
+   git clone https://github.com/umerkay/aEYE.git
+   cd aEYE
    ```
 
 2. Install the required dependencies:
