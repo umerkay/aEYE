@@ -1,4 +1,4 @@
-~This repository does not include the model. I cannot find a sustainable way to host the model anywhere. :(~
+*This repository does not include the model. I cannot find a sustainable way to host the model anywhere. :(*
 
 ![image](https://github.com/umerkay/dl_project/assets/20483712/ffdfdd77-7072-429f-ae25-2b3eeb91c5b1)
 
